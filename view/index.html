@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Upload Big File</title>
+        <link rel="stylesheet" href="./static/bootstrap.min.css">
+        <link rel="stylesheet" href="./static/upload.css">
+        <script type="text/javascript" src="./static/jquery.min.js"></script>
+        <script type="text/javascript" src="./static/upload.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6">
+                    <div class="progress">
+                        <div id="upload_progress" class="progress-bar progress-bar-info progress-bar-striped active" style="width: 0%;">
+                            <div class="progress-value">0%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-offset-3 col-md-6">
+                    <span>Hash :</span><span id="response_hash"></span>
+                </div>
+                <div class="col-md-offset-3 col-md-6">
+                    <span>Name :</span><span id="response_name"></span>
+                </div>
+                <div class="col-md-offset-3 col-md-6">
+                    <span>Size :</span><span id="response_size"></span>
+                </div>
+
+                <div class="col-md-offset-3 col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon">IPFS API </span>
+                        <input type="text" id="ipfs_api" class="form-control" placeholder="http://127.0.0.1:5001/api/v0/add">
+                    </div>
+                </div>
+                <div class="col-md-offset-3 col-md-6">
+
+                    <input type="file" id="uploadFile" onchange="startUpload();" class="hide"/>
+                    <button type="button"  class="btn btn-primary " onclick="upload()">Upload</button>
+
+                    <button type="button"  class="btn btn-default " onclick="cancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+    </body>
+    <script type="text/javascript">
+        function upload() {
+            $("#uploadFile").trigger("click");
+        }
+        function startUpload() {
+            FileUpload.start();
+        }
+        function cancel() {
+            FileUpload.cancel();
+        }
+    </script>
+</html>
